@@ -1,14 +1,16 @@
 pipeline {
     agent any 
     stages {
-        stage('validate secret') {
+        stage('validate login') {
             steps {
-                withCredentials([string (
-                    credentialsId: 'practice-secret',
-                    variable: 'DB_PASSWORD'
+                withCredentials([usernamePassword (
+                    credentialsId: 'app-login',
+                    usernameVariable: 'APP_USER',
+                    passwordVariable: 'APP_PASSWORD'
                 )]) {
-                    sh 'test -n "$DB_PASSWORD"'
-                    echo 'Database password configured successully'
+                    sh 'test -n "$APP_USER"'
+                    sh 'test -n "$APP_PASSWORD"'
+                    echo 'Application Credentials configored Successfully'
                 }
             }
         }
