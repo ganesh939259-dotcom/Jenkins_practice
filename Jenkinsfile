@@ -1,14 +1,16 @@
 pipeline{
     agent any
-    stages {
-        stage('Check secret') {
+    stages{
+        stage('login') {
             steps {
-                withCredentials([string (
-                    credentialsId: "practice-secret",
-                    variable: "MY_SECRET"
+                withCredentials([usernamePassword(
+                    credentialsId: 'app-login',
+                    usernameVariable: 'APP_USER',
+                    passwordVariable: 'APP_PASSWORD'
                 )]) {
-                    sh 'test -n "$MY_SECRET"'
-                    echo 'configured successfully'
+                    sh 'test -n "$APP_USER"'
+                    sh 'test -n "$APP_PASSWORD"'
+                    echo 'app login configured successfully'
                 }
             }
         }
