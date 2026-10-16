@@ -1,25 +1,19 @@
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage('Build application') {
-            steps {
-                echo "Building application"
-                sh 'exit 1'
+        parameters {
+            choice(
+                name: 'ENVIRONMENT',
+                choices: ['dev', 'test', 'prod'],
+                description: 'Select deployment environment'
+            )
+        }
+        stages {
+            stage('Show environment') {
+                steps {
+                    echo "Selected environment: ${params.ENVIRONMENT}"
+                }
             }
-        }
-    }
-    post {
-        success {
-            echo "Build Completed Successfully"
-        }
-        failure {
-            echo "Build failured"
-        }
-        always {
-            echo "pipeline execution completed"
-        }
-        aborted {
-            echo 'Pipeline was aborted'
         }
     }
 }
