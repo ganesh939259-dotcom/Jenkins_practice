@@ -21,5 +21,17 @@ pipeline{
         echo 'deploying the application'
       }
     }
+    stage('Use Credentials'){
+      steps{
+        withCredentials([string(
+          credentialsId: 'practice-secret',
+          variable: 'MY_SECRET'
+        )]) {
+          sh 'echo Credentials is available'
+          sh 'test -n "$MY_SECRET"'
+          sh 'echo  "secret is configured successfully"'
+        }
+      }
+    }
   }
 }
