@@ -1,16 +1,14 @@
-pipeline{
-    agent any
-    stages{
-        stage('login') {
+pipeline {
+    agent any 
+    stages {
+        stage('secrete key') {
             steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'app-login',
-                    usernameVariable: 'APP_USER',
-                    passwordVariable: 'APP_PASSWORD'
+                withCredentials([string (
+                    credentialsId: 'practice-secret',
+                    variable: 'API_TOKEN'
                 )]) {
-                    sh 'test -n "$APP_USER"'
-                    sh 'test -n "$APP_PASSWORD"'
-                    echo 'app login configured successfully'
+                    sh 'test -n "$API_TOKEN"'
+                    echo 'api token taken successfully'
                 }
             }
         }
