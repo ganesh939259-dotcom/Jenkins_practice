@@ -1,14 +1,14 @@
 pipeline {
     agent any 
     stages {
-        stage('secrete key') {
+        stage('validate secret') {
             steps {
                 withCredentials([string (
                     credentialsId: 'practice-secret',
-                    variable: 'API_TOKEN'
+                    variable: 'DB_PASSWORD'
                 )]) {
-                    sh 'test -n "$API_TOKEN"'
-                    echo 'api token taken successfully'
+                    sh 'test -n "$DB_PASSWORD"'
+                    echo 'Database password configured successully'
                 }
             }
         }
