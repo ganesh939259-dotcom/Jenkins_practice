@@ -1,18 +1,21 @@
 pipeline {
-    agent any
+    agent any 
     stages {
-        stage('Test pipeline') {
+        stage('Build application') {
             steps {
-                sh 'echo "Running Pipeline"'
+                echo "Building application"
             }
         }
     }
     post {
         success {
-            echo "pipeline completed successfully"
+            echo "Build Completed Successfully"
         }
         failure {
-            echo "pipeline failed"
+            echo "Build failured"
+        }
+        always {
+            echo "pipeline execution completed"
         }
     }
 }
