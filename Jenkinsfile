@@ -18,5 +18,8 @@ pipeline {
         always {
             echo "pipeline execution completed"
         }
+        aborted {
+            echo 'Pipeline was aborted'
+        }
     }
 }
