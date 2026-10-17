@@ -1,35 +1,15 @@
 pipeline {
     agent any 
     stages {
-        stage ('Checkout') {
-            steps {
-                echo "code checkout the application"
-            }
-        }
-        stage ('Build') {
-            steps {
-                echo "Building the application"
-            }
-        }
-        stage ('Test') {
-            steps {
-                echo "Testing the application"
-            }
-        }
-        stage ('Deploy') {
-            steps {
-                echo "Deploying the application"
-            }
-        }
-        stage ('app-login') {
-            steps {
-                withCredentials([string (
-                    credentialsId: 'practice-secret',
-                    variable: 'API_TOKEN'
-                )]) {
-                    sh 'test -n "$API_TOKEN"'
-                    echo 'API token configured successfully'
-                }
+        stage ('check app login') {
+            withCredentials([usernamepassword (
+                credentailsId: 'app-login',
+                usernameVariable: 'APP_USER',
+                passwordVariable: 'APP_PASSWORD'
+            )]) {
+                sh 'test -n "$APP_USER"'
+                sh 'test -n "$APP_PASSWORD"'
+                echo 'Application login credentials verified successfully'
             }
         }
     }
