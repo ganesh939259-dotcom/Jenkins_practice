@@ -1,10 +1,14 @@
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage ('Retry Demo') {
+        stage ('app-login') {
             steps {
-                retry(3) {
-                    sh 'echo "Command executed successfully"'
+                withCredentials([string (
+                    credentialsId: 'practice-secret',
+                    variable: 'API_TOKEN'
+                )]) {
+                    sh 'test -n "$API_TOKEN"'
+                    echo 'app configured successfully'
                 }
             }
         }
