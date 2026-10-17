@@ -1,19 +1,12 @@
 pipeline {
     agent any 
     stages {
-        stage ('check app login') {
+        stage ('Retry Demo') {
             steps {
-                withCredentials([usernamePassword (
-                credentialsId: 'app-login',
-                usernameVariable: 'APP_USER',
-                passwordVariable: 'APP_PASSWORD'
-            )]) {
-                    sh 'test -n "$APP_USER"'
-                    sh 'test -n "$APP_PASSWORD"'
-                    echo 'Application login credentials verified successfully'
+                retry(3) {
+                    sh 'echo "Command executed successfully"'
                 }
             }
         }
     }
 }
-
