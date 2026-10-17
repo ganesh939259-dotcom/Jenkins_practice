@@ -1,18 +1,36 @@
 pipeline {
-    agent any
-    parameters {
-        choice(
-            name: 'ENVIRONMENT',
-            choices: ['dev', 'test', 'prod'],
-            description: 'Select deployment environment'
-        )
-    }
+    agent any 
     stages {
-        stage('Show environment') {
+        stage ('Checkout') {
             steps {
-                echo "Selected environment: ${params.ENVIRONMENT}"
+                echo "code checkout the application"
+            }
+        }
+        stage ('Build') {
+            steps {
+                echo "Building the application"
+            }
+        }
+        stage ('Test') {
+            steps {
+                echo "Testing the application"
+            }
+        }
+        stage ('Deploy') {
+            steps {
+                echo "Deploying the application"
+            }
+        }
+        stage ('app-login') {
+            steps {
+                withCredentials([string (
+                    credentialsId: 'practice-secret',
+                    Variables: 'API_TOKEN'
+                )]) {
+                    sh 'test -n "$API_TOKEN"'
+                    echo 'API token configured successfully'
                 }
             }
         }
     }
-
+}
