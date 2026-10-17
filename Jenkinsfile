@@ -25,7 +25,7 @@ pipeline {
             steps {
                 withCredentials([string (
                     credentialsId: 'practice-secret',
-                    variables: 'API_TOKEN'
+                    variable: 'API_TOKEN'
                 )]) {
                     sh 'test -n "$API_TOKEN"'
                     echo 'API token configured successfully'
