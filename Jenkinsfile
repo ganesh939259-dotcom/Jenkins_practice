@@ -3,9 +3,9 @@ pipeline {
     stages {
         stage ('check agent') {
             steps {
-                sh 'hostname'
-                sh 'whoami'
-                sh 'pwd'
+                sh 'date'
+                sh 'uname -a'
+                sh 'df -h .'
             }
         }
     }
