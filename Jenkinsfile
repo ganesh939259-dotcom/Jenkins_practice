@@ -1,12 +1,14 @@
 pipeline {
-    agent any 
+    agent { label 'linux-agent' }
     stages {
-        stage ('check agent') {
+        stage('Verify agent') {
             steps {
-                sh 'date'
-                sh 'uname -a'
-                sh 'df -h .'
+                sh 'hostname'
+                sh 'whoami'
+                sh 'pwd'
             }
         }
     }
 }
+
+              
