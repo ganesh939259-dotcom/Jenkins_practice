@@ -2,15 +2,18 @@ pipeline {
     agent any 
     stages {
         stage ('check app login') {
-            withCredentials([usernamepassword (
-                credentailsId: 'app-login',
+            steps {
+                withCredentials([usernamePassword (
+                credentialsId: 'app-login',
                 usernameVariable: 'APP_USER',
                 passwordVariable: 'APP_PASSWORD'
             )]) {
-                sh 'test -n "$APP_USER"'
-                sh 'test -n "$APP_PASSWORD"'
-                echo 'Application login credentials verified successfully'
+                    sh 'test -n "$APP_USER"'
+                    sh 'test -n "$APP_PASSWORD"'
+                    echo 'Application login credentials verified successfully'
+                }
             }
         }
     }
 }
+
