@@ -1,14 +1,16 @@
 pipeline {
-    agent any
+    agent any 
     stages {
-        stage('api-token') {
+        stage('Checking username and passwd') {
             steps {
-                withCredentials([string (
-                    credentialsId: 'practice-secret',
-                    variable: 'API_TOKEN'
+                withCredentials([usernamePassword (
+                    credentialId: 'practice-username',
+                    usernameVariable: 'APP_USER',
+                    passwordVariable: 'APP_PASSWORD'
                 )]) {
-                    sh 'test -n "$API_TOKEN"'
-                    echo "API configured Successfully"
+                    sh 'test -n "$APP_USER"'
+                    sh 'test -n "APP_PASSWORD"'
+                    echo "Username and password configured successfully"
                 }
             }
         }
