@@ -5,7 +5,7 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey (
                     credentialsId: 'privatekey-authentication',
-                    KeyFileVariable: 'SSH_KEY',
+                    keyFileVariable: 'SSH_KEY',
                     usernameVariable: 'SSH_USER'
                 )]) {
                     sh 'test -n "$SSH_KEY"'
