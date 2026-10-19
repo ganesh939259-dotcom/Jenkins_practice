@@ -3,10 +3,11 @@
 pipeline {
     agent any 
     stages {
-        stage('Shared Testing Library') {
+        stage('shared testing libraries') {
             steps {
-                greet('ganesh')
-                greet('Ravi')
+                greet('Linux !')
+                greet('docker !')
+                greet('Jenkins !')
                 greet()
             }
         }
