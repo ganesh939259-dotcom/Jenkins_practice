@@ -1,11 +1,11 @@
 @Library('my-shared-library') _
 
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage('Shared Library Test') {
+        stage('Shared Testing Library'){
             steps {
-                greet()
+                greet('ganesh')
             }
         }
     }
