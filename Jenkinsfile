@@ -1,19 +1,14 @@
 pipeline {
-    agent any
-    environment {
-        APP_ENV='nginx'
-        APP_NAME='demo-app'
-        APP_VERSION='1.0'
-    }
+    agent { label 'linux-agent' }
     stages {
-        stage('checking environment') {
+        stage('system information') {
             steps {
-                echo "application: ${env.APP_NAME}"
-                echo "ENVIRONMENT: ${env.APP_ENV}"
-                echo "VERSION: ${env.APP_VERSION}"
-
                 sh '''
-                echo "build number:$BUILD_NUMBER"
+                echo "Current User: $pwd"
+                echo "Hostname: $hostname"
+                echo "Current Working directory: $pwd"
+                echo "Build number: $BUILD_NUMBER"
+                echo "Workspace: $WORKSPACE"
                 '''
             }
         }
