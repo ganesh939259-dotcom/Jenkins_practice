@@ -1,14 +1,25 @@
 pipeline {
-    agent { label 'linux-agent' }
+    agent any 
     stages {
-        stage('Verify agent') {
+        stage('Checkout') {
             steps {
-                sh 'hostname'
-                sh 'whoami'
-                sh 'pwd'
+                echo 'code checkout'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building the test'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing the application'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application'
             }
         }
     }
 }
-
-              
