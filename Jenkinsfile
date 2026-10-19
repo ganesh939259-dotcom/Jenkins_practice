@@ -1,10 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('Creating Artifact') {
+        stages('Testing') {
             steps {
-                sh 'echo "Really become to devops engineer" > devops.txt'
-                archiveArtifacts artifacts: 'devops.txt'
+                sh '''
+                echo "Running test...."
+                echo "Test 1:PASS"
+                echo "Test 2:PASS"
+                '''
             }
         }
     }
