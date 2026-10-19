@@ -1,10 +1,10 @@
 pipeline {
-    agent any
+    agent any 
     stages {
-        stage('Creatin Artifact') {
+        stage('Creating Artifact') {
             steps {
-                sh 'echo "Hello from Jenkins > hello.txt"'
-                archieveArtifact artifacts: 'hello.txt'
+                sh 'echo "Hello From Jenkins > hello.txt"'
+                achieveArtifact artifacts: 'hello.txt'
             }
         }
     }
