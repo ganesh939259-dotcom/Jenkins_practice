@@ -1,9 +1,8 @@
-@Library('my-shared-library') _
-
+@Library('devops-library') _
 pipeline {
-    agent any
+    agent any 
     stages {
-        stage('Shared Testing Library'){
+        stage('sharing libraries') {
             steps {
                 greet()
             }
