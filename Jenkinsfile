@@ -1,18 +1,19 @@
 pipeline {
     agent any
     environment {
-        APP_ENV='test'
+        APP_ENV='nginx'
         APP_NAME='demo-app'
+        APP_VERSION='1.0'
     }
     stages {
-        stage('checking Environment variable') {
+        stage('checking environment') {
             steps {
                 echo "application: ${env.APP_NAME}"
-                echo "Environment: ${env.APP_ENV}"
+                echo "ENVIRONMENT: ${env.APP_ENV}"
+                echo "VERSION: ${env.APP_VERSION}"
 
                 sh '''
-                echo "Build number: $BUILD_NUMBER"
-                echo "Workspace: $WORKSPACE"
+                echo "build number:$BUILD_NUMBER"
                 '''
             }
         }
