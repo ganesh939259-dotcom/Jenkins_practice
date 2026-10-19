@@ -1,16 +1,21 @@
 pipeline {
-    agent { label 'linux-agent' }
+    agent any
+    environment {
+        APP_NAME='nginx'
+        APP_ENV='test'
+    }
     stages {
-        stage('system information') {
+        stage('Deploy application') {
+            when {
+                environment name: "APP_ENV", value: 'test'
+            }
             steps {
-                sh '''
-                echo "Current User: $pwd"
-                echo "Hostname: $hostname"
-                echo "Current Working directory: $pwd"
-                echo "Build number: $BUILD_NUMBER"
-                echo "Workspace: $WORKSPACE"
-                '''
+                echo "application: ${env.APP_NAME}"
+                echo "environment: ${env.APP_ENV}"
+                echo "Deploying application Test environment"
             }
         }
     }
 }
+
+                
