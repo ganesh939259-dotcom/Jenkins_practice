@@ -1,16 +1,16 @@
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage('Checking username and passwd') {
+        stage('ssh-privatekey') {
             steps {
-                withCredentials([usernamePassword (
-                    credentialsId: 'practice-username',
-                    usernameVariable: 'APP_USER',
-                    passwordVariable: 'APP_PASSWORD'
+                withCredentials([sshUserPrivateKey (
+                    credentialsId: 'privatekey-authentication',
+                    KeyFileVariable: 'SSH_KEY',
+                    usernameVariable: 'SSH_USER'
                 )]) {
-                    sh 'test -n "$APP_USER"'
-                    sh 'test -n "APP_PASSWORD"'
-                    echo "Username and password configured successfully"
+                    sh 'test -n "$SSH_KEY"'
+                    sh 'test -n "$SSH_USER"'
+                    echo "shh private key successfully configures"
                 }
             }
         }
