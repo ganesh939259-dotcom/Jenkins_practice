@@ -1,32 +1,20 @@
 pipeline {
     agent any
+    environment {
+        APP_ENV='test'
+        APP_NAME='demo-app'
+    }
     stages {
-        stage('Checking Multiple Credentials') {
+        stage('checking Environment variable') {
             steps {
-                withCredentials([
-                    string (
-                        credentialsId: 'practice-secret',
-                        variable: 'API_TOKEN'
-                ),
-                usernamePassword(
-                    credentialsId: 'practice-username',
-                    usernameVariable: 'USER_NAME',
-                    passwordVariable: 'USER_PASSWORD'
-                )]) {
-                    sh '''
-                    test -n "$API_TOKEN" &&
-                    test -n "$USER_NAME" &&
-                    test -n "$USER_PASSWORD"
-                    '''
-                    echo "All credentials loaded successfully"
-                }
+                echo "application: ${env.APP_NAME}"
+                echo "Environment: ${env.APP_ENV}"
+
+                sh '''
+                echo "Build number: $BUILD_NUMBER"
+                echo "Workspace: $WORKSPACE"
+                '''
             }
         }
     }
 }
-
-                                
-                                
-                                
-                                
-                    
