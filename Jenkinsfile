@@ -1,24 +1,15 @@
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage('Checkout') {
+        stage('api-token') {
             steps {
-                echo 'code checkout'
-            }
-        }
-        stage('Build') {
-            steps {
-                echo 'Building the test'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing the application'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the application'
+                withCredentials([string (
+                    credentialsId: 'practice-secret',
+                    Variable: 'API_TOKEN'
+                )]) {
+                    sh 'test -n "$API_TOKEN"'
+                    echo "API configured Successfully"
+                }
             }
         }
     }
