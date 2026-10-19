@@ -4,7 +4,7 @@ pipeline {
         stage('Creating Artifact') {
             steps {
                 sh 'echo "Hello From Jenkins" > hello.txt'
-                achiveArtifacts artifacts: 'hello.txt'
+                archiveArtifacts artifacts: 'hello.txt'
             }
         }
     }
