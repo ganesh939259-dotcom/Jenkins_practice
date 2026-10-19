@@ -5,7 +5,8 @@ pipeline {
     stages {
         stage('shared testing libraries') {
             steps {
-              greet()
+              greet('ganesh)
+              bye()
             }
         }
     }
