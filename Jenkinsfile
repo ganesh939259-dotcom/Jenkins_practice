@@ -1,18 +1,32 @@
 pipeline {
     agent any
     stages {
-        stage('ssh-privatekey') {
+        stage('Checking Multiple Credentials') {
             steps {
-                withCredentials([sshUserPrivateKey (
-                    credentialsId: 'privatekey-authentication',
-                    keyFileVariable: 'SSH_KEY',
-                    usernameVariable: 'SSH_USER'
+                withCredentials([
+                    string (
+                        credentialsId: 'practice-secret',
+                        variable: 'API_TOKEN'
+                ),
+                usernamePassword(
+                    credentialsId: 'practice-username',
+                    usernameVariable: 'USER_NAME',
+                    passwordVariable: 'USER_PASSWORD'
                 )]) {
-                    sh 'test -n "$SSH_KEY"'
-                    sh 'test -n "$SSH_USER"'
-                    echo "shh private key successfully configures"
+                    sh '''
+                    test -n "$API_TOKEN" &&
+                    test -n "$USER_NAME" &&
+                    test -n "$USER_PASSWORD"
+                    '''
+                    echo "All credentials loaded successfully"
                 }
             }
         }
     }
 }
+
+                                
+                                
+                                
+                                
+                    
