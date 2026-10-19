@@ -1,11 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Creating Artifacts') {
+        stage('Creating Artifact') {
             steps {
-                sh ' echo "Hello From Jenkins" > hello'
-                sh ' echo "DevOps practice" > app'
-                archiveArtifacts artifacts: 'hello,app'
+                sh 'echo "Really become to devops engineer" > devops
+                archiveArtifacts artifacts: 'devops'
             }
         }
     }
