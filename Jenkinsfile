@@ -5,10 +5,7 @@ pipeline {
     stages {
         stage('shared testing libraries') {
             steps {
-                greet('Linux !')
-                greet('docker !')
-                greet('Jenkins !')
-                greet()
+                greet('ganesh')
             }
         }
     }
