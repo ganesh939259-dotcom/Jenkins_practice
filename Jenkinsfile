@@ -1,21 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage ('Build') {
+        stage('Create Artifact') {
             steps {
-                echo "Building application"
+                sh 'echo "Hello from jenkins" > hello.txt'
+                archiveArtifacts artifacts: 'hello.txt'
             }
-        }
-    }
-    post {
-        always {
-            echo "pipeline executed successfully"
-        }
-        success {
-            echo "pipeline successed"
-        }
-        failure {
-            echo "pipeline failed"
         }
     }
 }
