@@ -4,7 +4,7 @@ pipeline {
         stage('Checking username and passwd') {
             steps {
                 withCredentials([usernamePassword (
-                    credentialId: 'practice-username',
+                    credentialsId: 'practice-username',
                     usernameVariable: 'APP_USER',
                     passwordVariable: 'APP_PASSWORD'
                 )]) {
