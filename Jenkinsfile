@@ -1,21 +1,21 @@
 pipeline {
     agent any
-    environment {
-        APP_NAME='nginx'
-        APP_ENV='test'
-    }
     stages {
-        stage('Deploy application') {
-            when {
-                environment name: "APP_ENV", value: 'test'
-            }
+        stage ('Build') {
             steps {
-                echo "application: ${env.APP_NAME}"
-                echo "environment: ${env.APP_ENV}"
-                echo "Deploying application Test environment"
+                echo "Building application"
             }
         }
     }
+    post {
+        always {
+            echo "pipeline executed successfully"
+        }
+        success {
+            echo "pipeline successed"
+        }
+        failed {
+            echo "pipeline failed"
+        }
+    }
 }
-
-                
