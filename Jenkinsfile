@@ -1,14 +1,12 @@
-pipeline {
-    agent any
-    stages {
-        stage('Testing') {
-            steps {
-                sh '''
-                echo "Running test...."
-                echo "Test 1:PASS"
-                echo "Test 2:PASS"
-                '''
-            }
-        }
-    }
+  pipeline {
+      agent any
+      stages {
+          stage('Creating Artifact') {
+              steps {
+                  sh ' echo "I want to become a DevOps Engineer" > devops.txt'
+                  archiveArtifacts artifacts: 'devops.txt'
+              }
+          }
+      }
+  }
 }
