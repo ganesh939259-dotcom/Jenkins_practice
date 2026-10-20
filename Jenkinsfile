@@ -3,7 +3,7 @@ pipeline {
     parameters {
         choice (
             name: 'ENVIRONMENT',
-            choices: ['dev', 'test', 'prod']
+            choices: ['dev', 'test', 'prod'],
             description: 'select your environment'
         )
     }
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                expressio {
+                expression {
                     params.ENVIRONMENT=='prod'
                 }
             }
