@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('parralel checking') {
-            parralel {
+            parallel {
                 stage('Linux Testing') {
                     steps {
                         echo "Linux environment checking"
