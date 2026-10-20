@@ -3,16 +3,16 @@ pipeline {
     parameters {
         string (
             name: 'PERSON',
-            defaultValue: 'Ganesh',
-            description : 'Enter your name'
-        )
+            defaultValue: 'Ravi',
+            description: 'Enter your name'
+
+            )
     }
     stages {
-        stage('Greeting') {
+        stage('greeting') {
             steps {
-                echo "Hello, ${params.PERSON}!"
+                echo "Hello, ${params.PERSON!}"
             }
         }
     }
 }
-
