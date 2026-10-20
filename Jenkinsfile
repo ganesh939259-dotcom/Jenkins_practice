@@ -1,11 +1,15 @@
 pipeline {
     agent any
-    stages {
-        stage('Creating Artifact') {
-            steps {
-                sh ' echo "Iam Learning Jenkins Here" > hello.txt'
-                archiveArtifacts artifacts: 'hello.txt'
-            }
+    parameters {
+        string (
+            name: 'PERSON',
+            defaultValue: 'Ganesh',
+            description : 'Enter your name'
+        )
+    }
+    stage('Greeting') {
+        steps {
+            echo "Hello, ${parms.PERSON}!"
         }
     }
 }
