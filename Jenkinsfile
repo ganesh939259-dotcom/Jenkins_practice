@@ -1,23 +1,18 @@
 pipeline {
     agent any 
-    stages {
-        stage('Building'){
-            steps {
-                echo "Buildig the application"
+    stages{
+        stage('Username and Password') {
+            steps{
+                withCredentials([usernamePassword (
+                    credentialsId: 'demo-credentials',
+                    usernameVariable: 'APP_USER',
+                    passwordVariable: 'APP_PASSWORD'
+                )]) {
+                    sh 'test -n $APP_USER'
+                    sh 'test -n $APP_PASSWORD'
+                    echo "never print password"
+                }
             }
-        }
-        stage('Testing'){
-            steps {
-                echo "Testing the application"
-            }
-        }
-    }
-    post {
-        success{
-            echo "pipeline executed successfully"
-        }
-        failure {
-            echo "pipeline failure"
         }
     }
 }
