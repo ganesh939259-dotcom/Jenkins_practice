@@ -1,21 +1,13 @@
 pipeline {
-    agent any 
-    stages {
+    agent any
+    environment {
+        APP_NAME = 'myapp'
+    }
+    stages{
         stage('Build') {
             steps {
-                echo "Building the application"
+                sh ' echo $APP_NAME'
             }
-        }
-        stage('Test') {
-            steps {
-                echo "Testing the application"
-            }
-        }
-    }
-    post {
-        always {
-                echo "pipeline finished"
         }
     }
 }
-
