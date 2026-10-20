@@ -2,22 +2,19 @@ pipeline {
     agent any 
     stages {
         stage('Test') {
-            steps{
+            steps {
                 catchError (
                     buildResult: 'Success',
-                    stageResult: 'Faliure',
+                    stageResult: 'failure'
                 ) {
                     sh 'exit 1'
                 }
             }
-            stage('Deploy') {
-                steps {
-                    echo "Deploying the application"
-                }
+        }
+        stage('Deploy') {
+            steps {
+                echo "Deploying Application"
             }
         }
     }
 }
-
-
-                        
