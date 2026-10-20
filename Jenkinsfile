@@ -1,21 +1,20 @@
-pipeline  {
-    agent any
+pipeline {
+    agent any 
     stages {
         stage('Build') {
             steps {
                 echo "Building the application"
             }
         }
-        stage('Approval') {
+        stage('Approve') {
             steps {
-                input message: 'Approve deployment?'
+                input message: 'Approve development?'
             }
         }
         stage('Deploy') {
-                steps {
-                    echo "Deploying the applications"
-                }
+            steps {
+                echo "Deploying the application"
             }
         }
-    
+    }
 }
