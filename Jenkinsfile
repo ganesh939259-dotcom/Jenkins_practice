@@ -4,7 +4,7 @@ pipeline {
         stage('Creating the artifact') {
             steps {
                 sh ' echo "Application:nginx" > app.txt'
-                sh ' echo "version:1.0" > version.txt'
+                sh ' echo "version:2.0" > version.txt'
                 sh ' echo "jenkins artifact practice" > readme.log'
                 archiveArtifacts artifacts: '*.txt'
             }
