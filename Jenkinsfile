@@ -9,7 +9,7 @@ pipeline {
     }
     stages {
         stage('Creating Files') {
-            sh echo "Application build" > app.txt'
+            sh 'echo "Application build" > app.txt'
         }
     }
     stage('Archive') {
