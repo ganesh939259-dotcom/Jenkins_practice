@@ -2,16 +2,15 @@ pipeline {
     agent any
     parameters {
         string (
-            name: 'PERSON',
-            defaultValue: 'Ravi',
-            description: 'Enter your name'
-
-            )
+            name: "ENVIRONMENT",
+            choices: ['dev', 'test', 'prod'],
+            description: 'Select deployment environment'
+        )
     }
     stages {
-        stage('greeting') {
+        stage('Deploy') {
             steps {
-                echo "Hello, ${params.PERSON}!"
+                echo "Deploying to ${params.ENVIRONMENT}"
             }
         }
     }
