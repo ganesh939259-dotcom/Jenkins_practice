@@ -1,19 +1,22 @@
-
 pipeline {
     agent any 
-    stages{
-        stage('Username and Password') {
-            steps{
+    stages {
+        stage('Creating Username') {
+            steps {
                 withCredentials([usernamePassword (
                     credentialsId: 'demo-credentials',
                     usernameVariable: 'APP_USER',
-                    passwordVariable: 'APP_PASSWORD'
+                    passwordVariable: "APP_PASSWORD'
                 )]) {
-                    sh 'test -n $APP_USER'
-                    sh 'test -n $APP_PASSWORD'
-                    echo "never print password"
+                    sh ' echo "username:$APP_USER'
                 }
             }
         }
     }
+    post {
+        always {
+            echo "pipeline executed successfully"
+        }
+    }
 }
+
