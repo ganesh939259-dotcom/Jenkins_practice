@@ -7,9 +7,12 @@ pipeline {
             description : 'Enter your name'
         )
     }
-    stage('Greeting') {
-        steps {
-            echo "Hello, ${parms.PERSON}!"
+    stages {
+        stage('Greeting') {
+            steps {
+                echo "Hello, ${parms.PERSON}!"
+            }
         }
     }
 }
+
