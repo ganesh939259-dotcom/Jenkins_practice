@@ -1,22 +1,31 @@
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage('Creating Username') {
+        stage('Build') {
             steps {
-                withCredentials([usernamePassword (
-                    credentialsId: 'demo-credentials',
-                    usernameVariable: 'APP_USER',
-                    passwordVariable: "APP_PASSWORD"
-                )]) {
-                    sh ' echo "username:$APP_USER"'
-                }
+                echo "Building the application"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Test running"
+                sh 'exit 1'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "Deploying Application"
             }
         }
     }
     post {
-        always {
-            echo "pipeline executed successfully"
+        success {
+            echo "pipeline successed"
+        }
+        failure {
+            echo "pipeline failure"
         }
     }
 }
 
+        
