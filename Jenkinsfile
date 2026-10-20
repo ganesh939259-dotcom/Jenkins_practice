@@ -1,14 +1,11 @@
 pipeline {
-    agent {
-        label 'linux'
-    }
+    agent any 
     stages {
-        stage('Check Agent') {
+        stage('Docker Test') {
             steps {
-                sh 'whoami'
-                sh 'pwd'
-                sh 'hostname'
+                sh 'docker run --rm nginx:alpin nginx -v'
             }
         }
     }
 }
+
