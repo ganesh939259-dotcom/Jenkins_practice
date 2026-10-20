@@ -4,7 +4,7 @@ pipeline {
         choice (
             name: 'ENVIRONMENT',
             choices: ['dev','test','prod'],
-            defaultValue: 'selecting the environment'
+            description: 'selecting the environment'
         )
     }
     stages{
