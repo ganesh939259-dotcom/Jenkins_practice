@@ -1,23 +1,18 @@
 pipeline {
     agent any 
-    parameters {
-        string (
-            name: 'APP_NAME',
-            defaultValue: 'nginx',
-            description: "Enter application name"
-        )
-        choice (
-            name: 'ENVIRONMENT',
-            choices: ['dev','test','prod'],
-            description: "select deployment application"
-        )
-    }
     stages {
-        stage('Deploy') {
+        stage('Build') {
             steps {
-                echo "deploying: ${params.APP_NAME}"
-                echo "deploying: ${params.ENVIRONMENT}"
+                echo "Building the application"
             }
+        }
+    }
+    post {
+        success {
+            echo "pipeline executed successfully"
+        }
+        failure {
+            echo "pipeline failed"
         }
     }
 }
