@@ -6,9 +6,14 @@ pipeline {
                 echo "Building the application"
             }
         }
+        stage('Test'){
+            steps {
+                echo "Testing the application"
+            }
+        }
         stage('Approve') {
             steps {
-                input message: 'Approve development?'
+                input message: 'Approve the deploying'
             }
         }
         stage('Deploy') {
