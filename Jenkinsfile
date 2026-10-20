@@ -1,25 +1,18 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
-            steps {
-                echo "Checkout the code"
-            }
-        }
-        stage('Build') {
-            steps {
-                echo "Building the application"
-            }
-        }
-        stage('Testing') {
-            steps {
-                echo "Testing the application"
-            }
-        }
-        stage('Deploying') {
-            steps {
-                echo "Deploying the application"
+        stage('parralel checking') {
+            parralel {
+                stage('Linux Testing') {
+                    steps {
+                        echo "Linux environment checking"
+                    }
+                }
+                stage('Docker Testing') {
+                    steps {
+                        echo "Docker environment checking"
+                    }
+                }
             }
         }
     }
-}
