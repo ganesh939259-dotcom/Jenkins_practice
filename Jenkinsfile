@@ -1,12 +1,24 @@
-@Library('devops-library') _
-
 pipeline {
-    agent any 
+    angent any
     stages {
-        stage('shared testing libraries') {
+        stage('Checkout') {
             steps {
-              greet('ganesh')
-              bye()
+                echo "Checkout the code"
+            }
+        }
+        stage('Build') {
+            steps {
+                echo "Building the application"
+            }
+        }
+        stage('Testing') {
+            steps {
+                echo "Testing the application"
+            }
+        }
+        stage('Deploying') {
+            steps {
+                echo Deploying the application"
             }
         }
     }
