@@ -1,9 +1,9 @@
 pipeline {
     agent any 
     stages {
-        stage('Docker Test') {
+        stage('Building Docker Image') {
             steps {
-                sh 'docker run --rm nginx:alpine nginx -v'
+                sh 'docker build -t myapp-ganesh .'
             }
         }
     }
