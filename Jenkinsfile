@@ -1,20 +1,17 @@
 pipeline {
     agent any
     parameters {
-        string(
+        string (
             name: 'APP_NAME',
             defaultValue: 'nginx',
-            description: 'select your option'
-        ) {
-            stages{
-                stage('Build') {
-                    steps {
-                        sh ' echo $APP_NAME'
-                    }
-                }
+            description: 'select your parameters'
+        ) 
+    }
+    stages{
+        stage('Build') {
+            steps {
+                echo "Building the application"
             }
         }
     }
 }
-
-  
