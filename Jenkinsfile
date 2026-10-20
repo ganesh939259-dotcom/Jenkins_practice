@@ -1,13 +1,25 @@
 pipeline {
-    agent any 
+    agent any
+    parameters {
+        string (
+            name: 'ARCHIVE_FILES',
+            defaultValue: 'true',
+            description: 'Set to tru archive app.txt'
+        )
+    }
     stages {
-        stage('Creating the artifact') {
-            steps {
-                sh ' echo "Application:nginx" > app.txt'
-                sh ' echo "version:2.0" > version.txt'
-                sh ' echo "jenkins artifact practice" > readme.log'
-                archiveArtifacts artifacts: '*.txt'
+        stage('Creating Files') {
+            sh echo "Application build" > app.txt'
+        }
+    }
+    stage('Archive') {
+        when {
+            expression {
+                params.ARCHIVE_FILES == 'true'
             }
+        }
+        steps {
+            archiveArtifacts artifacts: 'app.txt'
         }
     }
 }
