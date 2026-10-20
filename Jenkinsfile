@@ -1,11 +1,13 @@
 pipeline {
-    agent any 
+    agent {
+        label: 'linux'
+    }
     stages {
-        stage('Build') {
+        stage('Check Agent') {
             steps {
-                sh ' echo "Job name:$JOB_NAME"'
-                sh ' echo "Build number:$BUILD_NUMBER"'
-                sh ' echo "Workspace:$WORKSPACE"'
+                sh 'whoami'
+                sh 'pwd'
+                sh 'hostname'
             }
         }
     }
