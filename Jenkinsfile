@@ -5,6 +5,7 @@ pipeline {
             steps {
                 retry(2) {
                     sh ' echo "Building application"'
+                    sh 'exit 1'
                 }
             }
         }
