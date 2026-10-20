@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Docker Test') {
             steps {
-                sh 'docker run --rm nginx:alpin nginx -v'
+                sh 'docker run --rm nginx:alpine nginx -v'
             }
         }
     }
