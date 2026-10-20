@@ -10,8 +10,14 @@ pipeline {
                     sh 'exit 1'
                 }
             }
+            stage('Deploy') {
+                steps {
+                    echo "Deploying the application"
+                }
+            }
         }
     }
 }
+
 
                         
