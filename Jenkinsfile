@@ -6,9 +6,9 @@ pipeline {
                 withCredentials([usernamePassword (
                     credentialsId: 'demo-credentials',
                     usernameVariable: 'APP_USER',
-                    passwordVariable: "APP_PASSWORD'
+                    passwordVariable: "APP_PASSWORD"
                 )]) {
-                    sh ' echo "username:$APP_USER'
+                    sh ' echo "username:$APP_USER"'
                 }
             }
         }
