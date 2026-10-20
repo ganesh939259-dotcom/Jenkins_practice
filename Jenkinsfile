@@ -1,6 +1,11 @@
 pipeline {
     agent any 
-    stages {
+    stage('Build Docker Image') {
+    steps {
+        sh 'docker build -t myapp-ganesh:latest .'
+    }
+}
+stages {
         stage('Deploy') {
             steps {
                 sh '''
