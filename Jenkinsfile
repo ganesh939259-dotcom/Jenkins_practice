@@ -1,12 +1,11 @@
 pipeline {
-    agent any
-    triggers {
-        cron('H/2 * * * * ')
-    }
+    agent any 
     stages {
         stage('Build') {
             steps {
-                echo "Building the application"
+                sh ' echo "Build server"'
+                sh 'whoami'
+                sh ' pwd'
             }
         }
     }
