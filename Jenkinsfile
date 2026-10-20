@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Greeting') {
             steps {
-                echo "Hello, ${parms.PERSON}!"
+                echo "Hello, ${params.PERSON}!"
             }
         }
     }
