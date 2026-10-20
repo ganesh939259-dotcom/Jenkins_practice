@@ -1,12 +1,12 @@
 pipeline {
     agent any 
-    stage('Build Docker Image') {
-    steps {
-        sh 'docker build -t myapp-ganesh:latest .'
-    }
-}
-stages {
-        stage('Deploy') {
+    stages {
+        stage('Building Docker image') {
+            steps {
+                sh ' docker build -t myapp-ganesh .'
+            }
+        }
+        stage('Deploy the container') {
             steps {
                 sh '''
                 docker rm -f mycontainers || true
