@@ -1,12 +1,12 @@
 pipeline {
-    agent any
+    agent any 
     stages {
-        stage('Creating Multiple Artifacts') {
+        stage('Creating the artifact') {
             steps {
-                sh ' echo "Hello From Jenkins" > app.txt'
-                sh ' echo "version 1.0" > version.txt'
-
-                archiveArtifacts artifacts: 'app.txt,version.txt'
+                sh ' echo "Application:nginx" > app.txt'
+                sh ' echo "version:1.0" > version.txt'
+                sh ' echo "jenkins artifact practice" > readme.log'
+                archiveArtifacts artifacts: '*.txt'
             }
         }
     }
