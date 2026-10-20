@@ -1,13 +1,20 @@
 pipeline {
     agent any
-    environment {
-        APP_NAME = 'myapp'
-    }
-    stages{
-        stage('Build') {
-            steps {
-                sh ' echo $APP_NAME'
+    parameters {
+        string (
+            name: 'APP_NAME',
+            defaultValue: 'nginx',
+            description: 'select your option'
+        ) {
+            stages{
+                stage('Build') {
+                    steps {
+                        sh ' echo $APP_NAME'
+                    }
+                }
             }
         }
     }
 }
+
+  
