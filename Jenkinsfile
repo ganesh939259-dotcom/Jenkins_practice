@@ -1,30 +1,26 @@
-
 pipeline {
     agent any
-
-    parameters {
-        string(
-            name: 'ARCHIVE_FILES',
-            defaultValue: 'true',
-            description: 'Set to true to archive app.txt'
+    parameter {
+        choice (
+            name: 'ENVIRONMENT',
+            choices: ['dev','test','prod'],
+            defaultValue: 'selecting the environment'
         )
     }
-
-    stages {
-        stage('Creating Files') {
+    stages{
+        stage('Build') {
             steps {
-                sh 'echo "Application build" > app.txt'
+                echo "Building the application"
             }
         }
-
-        stage('Archive') {
+        stage('Deploy') {
             when {
                 expression {
-                    params.ARCHIVE_FILES == 'true'
+                    params.ENVIRONMENT == 'prod'
                 }
             }
             steps {
-                archiveArtifacts artifacts: 'app.txt'
+                echo "deploying the application"
             }
         }
     }
