@@ -1,27 +1,23 @@
 pipeline {
-    agent any
-    parameters {
-        choice (
-            name: 'ENVIRONMENT',
-            choices: ['dev','test','prod'],
-            description: 'selecting the environment'
-        )
-    }
-    stages{
-        stage('Build') {
+    agent any 
+    stages {
+        stage('Building'){
             steps {
-                echo "Building the application"
+                echo "Buildig the application"
             }
         }
-        stage('Deploy') {
-            when {
-                expression {
-                    params.ENVIRONMENT == 'prod'
-                }
-            }
+        stage('Testing'){
             steps {
-                echo "deploying the application"
+                echo "Testing the application"
             }
+        }
+    }
+    post {
+        success{
+            echo "pipeline executed successfully"
+        }
+        failure {
+            echo "pipeline failure"
         }
     }
 }
