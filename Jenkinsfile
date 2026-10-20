@@ -1,16 +1,22 @@
 pipeline {
-    agent any
+    agent any 
     parameters {
+        string (
+            name: 'APP_NAME',
+            defaultValue: 'nginx',
+            description: "Enter application name"
+        )
         choice (
-            name: "ENVIRONMENT",
-            choices: ['dev', 'test', 'prod'],
-            description: 'Select deployment environment'
+            name: 'ENVIRONMENT',
+            choices: ['dev','test','prod'],
+            description: "select deployment application"
         )
     }
     stages {
         stage('Deploy') {
             steps {
-                echo "Deploying to ${params.ENVIRONMENT}"
+                echo "deploying: ${params.APP_NAME}"
+                echo "deploying: ${params.ENVIRONMENT}"
             }
         }
     }
