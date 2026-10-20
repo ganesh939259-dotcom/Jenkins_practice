@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string (
+        string(
             name: 'APP_NAME',
             defaultValue: 'nginx',
             description: 'select your option'
